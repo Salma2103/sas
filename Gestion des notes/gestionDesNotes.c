@@ -111,7 +111,7 @@ float moyene,x;
     }
 
     }
-while(option!=7);
+while(option!=6);
 
 
 

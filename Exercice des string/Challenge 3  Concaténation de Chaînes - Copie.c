@@ -18,13 +18,12 @@ void menu(){
     printf("pour chercher un contact cliquer sur 4 \n");
     printf("pour afficher la liste des contacts cliquer sur 5 \n\n");
 }
-  int i=0;
-  struct contact contactList[i];
-   
+  struct contact contactList[100];
+   int i=0;
 
 
 void Ajouter(){
-  
+
 
 printf("nom:");
 scanf("%s",contactList[i].nom);
