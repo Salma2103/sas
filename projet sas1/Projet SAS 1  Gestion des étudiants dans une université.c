@@ -31,15 +31,33 @@ void Menu(){
 struct Etudiant ListeEtudiant[100];
 int i=0;
 void Ajouter(){
+    int dep;
     ListeEtudiant[i].NumeroUnique=i+1;
     printf("Enter le nom :");
     scanf("%s",&ListeEtudiant[i].Nom);
     printf("Enter le prenom :");
     scanf("%s",&ListeEtudiant[i].Prenom);
-    printf("Enter le Departement :");
-    scanf("%s",&ListeEtudiant[i].Departement);
+    printf("pour le Departement info cliquer sur 1 ");
+    printf("pour le Departement management cliquer sur 2 ");
+    printf("pour le Departement construction cliquer sur 3 ");
+    scanf("%d",&dep);
+    switch(dep){
+    case 1: strcpy(ListeEtudiant[i].Departement,"info");break;
+    case 2: strcpy(ListeEtudiant[i].Departement,"management");break;
+    case 3: strcpy(ListeEtudiant[i].Departement,"construction");break;
+
+    }
+
     printf("Enter la Note Générale :");
     scanf("%f",&ListeEtudiant[i].NoteGenerale);
+    printf("Enter la date naissance ****\n");
+     printf("Enter jour :");
+    scanf("%d",&ListeEtudiant[i].dateNaissance.jour);
+     printf("Enter mois:");
+    scanf("%d",&ListeEtudiant[i].dateNaissance.mois);
+     printf("Enter l' anne :");
+    scanf("%d",&ListeEtudiant[i].dateNaissance.anne);
+
     i++;
     printf("Etudiant ajouter avec succe!\n");
 
@@ -59,6 +77,8 @@ void Afficher(){
         printf("Prenom:%s \n",ListeEtudiant[j].Prenom);
         printf("Departement :%s \n",ListeEtudiant[j].Departement);
         printf("Note Générale :%.2f \n \n",ListeEtudiant[j].NoteGenerale);
+        printf("Date de naissance :%d / %d /%d \n \n",ListeEtudiant[j].dateNaissance.jour,ListeEtudiant[j].dateNaissance.mois,ListeEtudiant[j].dateNaissance.anne);
+
     }}
 }
 
@@ -190,9 +210,30 @@ char nom[20],depatrement[20];
 
 
 void statistiques(){
-    printf("le nombre total d'étudiants inscrits:%d",i);
-}
+int cont1=0,cont2=0,cont3=0;
 
+    printf("le nombre total d'étudiants inscrits:%d",i);
+    for (int j=0;j<i;j++){
+        if(strcmp(ListeEtudiant[j].Departement,"info")==0){
+
+               cont1++;
+          }
+        if(strcmp(ListeEtudiant[j].Departement,"management")==0){
+          cont2++;
+    }
+     if(strcmp(ListeEtudiant[j].Departement,"construction")==0){
+        cont3++;
+    }
+    }
+
+    printf(" le Departement  informatrique contient  %d etudiant ",cont1);
+    printf(" le Departement management contient  %d etudiant  ",cont2);
+    printf(" le Departement construction contient  %d etudiant  ",cont3);
+
+
+
+
+}
 /*
 void tri(){
     for( int  j=0;j<i-1;j++){
@@ -217,20 +258,35 @@ void tri(){
 
 
 
-
-
 */
 
- float MoyenneGeneral(){
-     float somme=0;
+
+
+ void MoyenneGeneral(){
+     float sommeInfo=0;
+     float sommeMangament=0;
+     float sommeConctruction=0;
+int cont1=0,cont2=0,cont3=0;
     for(int j=0;j<i;j++){
-        if(strcmp(ListeEtudiant[j].Departement,ListeEtudiant[j+1].Departement)==0){
-            //strcpy(ListeEtudiant[j].Departement);
-             somme=ListeEtudiant[j].NoteGenerale+somme/i;
+        if(strcmp(ListeEtudiant[j].Departement,"info")==0){
+              sommeInfo=ListeEtudiant[j].NoteGenerale+sommeInfo;
+              cont1++;
+          }
+        if(strcmp(ListeEtudiant[j].Departement,"management")==0){
+              sommeMangament=ListeEtudiant[j].NoteGenerale+sommeMangament;
+ cont2++;
+    }
+     if(strcmp(ListeEtudiant[j].Departement,"construction")==0){
+              sommeConctruction=ListeEtudiant[j].NoteGenerale+sommeConctruction;
+ cont3++;
     }
 
-printf("moyenne est %.2f",somme);
-    return ;
+}
+
+(cont1 != 0) ? printf("moyenne de depatrement informatique est %.2f \n",sommeInfo/cont1) : printf("depatrement informatique  est vide \n");
+(cont2 != 0) ? printf("moyenne de depatrement management est %.2f \n",sommeMangament/cont2): printf("depatrement management  est vide \n");
+(cont3 != 0) ? printf("moyenne de depatrement construction est %.2f \n",sommeConctruction/cont3) : printf("depatrement construction  est vide \n");
+
 }
 
 
@@ -247,7 +303,8 @@ scanf("%d",&choix);
     case 2: supprimerModifier() ;break;
 
     case 3:Afficher() ;break;
-
+    case 5:MoyenneGeneral();break;
+    case 5:MoyenneGeneral();break;
     case 6:rechercher() ;break;
 }
 
@@ -255,4 +312,6 @@ scanf("%d",&choix);
 }while(choix!=8);
 
 
-    return 0;}
+    return 0;
+
+    }
