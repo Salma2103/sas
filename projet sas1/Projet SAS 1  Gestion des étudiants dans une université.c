@@ -17,14 +17,14 @@ struct Etudiant{
     float NoteGenerale;
 };
 void Menu(){
-    printf("***********Menu************* \n");
-    printf("Pour ajouter un Ètudiant cliquer sur :1  \n");
-    printf("Pour modifier ou supprimer un Ètudiant cliquer sur :2  \n");
-    printf("Pour afficher un Ètudiant cliquer sur :3  \n");
-    printf("Pour afficher les dÈtails d'un Ètudiant cliquer sur :4  \n");
-    printf("Pour alculer la moyenne gÈnÈral  cliquer sur :5  \n");
-    printf(" Pour Rechercher  un Ètudiant cliquer sur  :6  \n");
-    printf("Pour tri  des Ètudiants cliquer sur :7  \n");
+    printf("******************Menu**************** \n");
+    printf("Pour ajouter un √©tudiant cliquer sur :1  \n");
+    printf("Pour modifier ou supprimer un √©tudiant cliquer sur :2  \n");
+    printf("Pour afficher un √©tudiant cliquer sur :3  \n");
+    printf("Pour calculer la moyenne g√©n√©ral  cliquer sur :4  \n");
+    printf("Pour les statistiques cliquer sur :5  \n");
+    printf("Pour Rechercher  un √©tudiant cliquer sur  :6 \n");
+    printf("Pour tri  des √©tudiants cliquer sur :7  \n");
 
 
 }
@@ -37,9 +37,9 @@ void Ajouter(){
     scanf("%s",&ListeEtudiant[i].Nom);
     printf("Enter le prenom :");
     scanf("%s",&ListeEtudiant[i].Prenom);
-    printf("pour le Departement info cliquer sur 1 ");
-    printf("pour le Departement management cliquer sur 2 ");
-    printf("pour le Departement construction cliquer sur 3 ");
+    printf("pour le Departement info cliquer sur 1 \n ");
+    printf("pour le Departement management cliquer sur 2\n ");
+    printf("pour le Departement construction cliquer sur 3 \n");
     scanf("%d",&dep);
     switch(dep){
     case 1: strcpy(ListeEtudiant[i].Departement,"info");break;
@@ -48,7 +48,7 @@ void Ajouter(){
 
     }
 
-    printf("Enter la Note GÈnÈrale :");
+    printf("Enter la Note G√©n√©rale :");
     scanf("%f",&ListeEtudiant[i].NoteGenerale);
     printf("Enter la date naissance ****\n");
      printf("Enter jour :");
@@ -66,7 +66,7 @@ void Ajouter(){
 
 void Afficher(){
  if(i==0){
-    printf("il n'y a aucun Ètudiant.\n\n");
+    printf("il n'y a aucun √©tudiant.\n\n");
 
  }else{
     for( int  j=0;j<i;j++){
@@ -76,14 +76,14 @@ void Afficher(){
         printf("Nom :%s \n",ListeEtudiant[j].Nom);
         printf("Prenom:%s \n",ListeEtudiant[j].Prenom);
         printf("Departement :%s \n",ListeEtudiant[j].Departement);
-        printf("Note GÈnÈrale :%.2f \n \n",ListeEtudiant[j].NoteGenerale);
+        printf("Note G√©n√©rale :%.2f \n ",ListeEtudiant[j].NoteGenerale);
         printf("Date de naissance :%d / %d /%d \n \n",ListeEtudiant[j].dateNaissance.jour,ListeEtudiant[j].dateNaissance.mois,ListeEtudiant[j].dateNaissance.anne);
 
     }}
 }
 
 void Modifier(int numero){
-
+int dep;
     for(int j=0;j<i;j++){
         if(ListeEtudiant[j].NumeroUnique==numero){
 
@@ -92,8 +92,17 @@ void Modifier(int numero){
              printf("Enter le nouveau prenom :");
              scanf("%s",&ListeEtudiant[j].Prenom);
              printf("Enter le  nouveau Departement :");
-             scanf("%s",&ListeEtudiant[j].Departement);
-             printf("Enter la nouveau Note GÈnÈrale :");
+    printf("pour le Departement info cliquer sur 1 \n");
+    printf("pour le Departement management cliquer sur 2 \n");
+    printf("pour le Departement construction cliquer sur 3 \n");
+    scanf("%d",&dep);
+    switch(dep){
+    case 1: strcpy(ListeEtudiant[i].Departement,"info");break;
+    case 2: strcpy(ListeEtudiant[i].Departement,"management");break;
+    case 3: strcpy(ListeEtudiant[i].Departement,"construction");break;
+
+    }
+             printf("Enter la nouveau Note G√©n√©rale :");
              scanf("%f",&ListeEtudiant[j].NoteGenerale);
         }
     }
@@ -110,7 +119,7 @@ void Supprimer(int numero){
              }
 
         }
-    }
+    }i--;
     printf("etudiant est supprimer/!\n");
 
 }
@@ -118,8 +127,8 @@ void Supprimer(int numero){
 void supprimerModifier(){
  int operation,numero;
 do{
-    printf("Pour modifier  un Ètudiant  cliquer sur :1  \n");
-    printf("Pour supprimer  un Ètudiant  cliquer sur :2  \n");
+    printf("Pour modifier  un √©tudiant  cliquer sur :1  \n");
+    printf("Pour supprimer  un √©tudiant  cliquer sur :2  \n");
     printf("Pour quitter   cliquer sur :3  \n");
 
 
@@ -140,10 +149,6 @@ scanf("%d",&operation);
 
 
 }while(operation!=3);
-
-
-
-
 }
 
 void rechercherNom(char nom[20]){
@@ -156,7 +161,7 @@ void rechercherNom(char nom[20]){
         printf("Nom :%s \n",ListeEtudiant[j].Nom);
         printf("Prenom:%s \n",ListeEtudiant[j].Prenom);
         printf("Departement :%s \n",ListeEtudiant[j].Departement);
-        printf("Note GÈnÈrale :%.2f \n \n",ListeEtudiant[j].NoteGenerale);
+        printf("Note G√©n√©rale :%.2f \n \n",ListeEtudiant[j].NoteGenerale);
         }
     }
 
@@ -173,7 +178,7 @@ void rechercherDepartement(char departement[20]){
         printf("Nom :%s \n",ListeEtudiant[j].Nom);
         printf("Prenom:%s \n",ListeEtudiant[j].Prenom);
         printf("Departement :%s \n",ListeEtudiant[j].Departement);
-        printf("Note GÈnÈrale :%.2f \n \n",ListeEtudiant[j].NoteGenerale);
+        printf("Note G√©n√©rale :%.2f \n \n",ListeEtudiant[j].NoteGenerale);
         }
     }
 
@@ -182,8 +187,8 @@ void rechercherDepartement(char departement[20]){
 void rechercher(){
     int operation;
 do{
-    printf("Pour Rechercher sur un Ètudiant par departement  cliquer sur :1  \n");
-    printf("Pour Rechercher  un Ètudiant par nom  cliquer sur :2  \n");
+    printf("Pour Rechercher sur un √©tudiant par departement  cliquer sur :1  \n");
+    printf("Pour Rechercher  un √©tudiant par nom  cliquer sur :2  \n");
     printf("Pour quitter   cliquer sur :3  \n");
 
 
@@ -209,58 +214,88 @@ char nom[20],depatrement[20];
 }
 
 
-void statistiques(){
-int cont1=0,cont2=0,cont3=0;
+void triA_Z(){
 
-    printf("le nombre total d'Ètudiants inscrits:%d",i);
-    for (int j=0;j<i;j++){
-        if(strcmp(ListeEtudiant[j].Departement,"info")==0){
+     for(int j=0;j<i-1;j++){
+     for(int k=j+1;k<i;k++){
+     if(strcmp(ListeEtudiant[j].Nom,ListeEtudiant[k].Nom)>0) {
+        struct Etudiant a=ListeEtudiant[j];
+       ListeEtudiant[j]=ListeEtudiant[k];
+        ListeEtudiant[k]=a;
+     }      
+  }      
+  }
+        printf("Tri alphabetique des √©tudiants effectu√© (A √† Z).\n");
 
-               cont1++;
-          }
-        if(strcmp(ListeEtudiant[j].Departement,"management")==0){
-          cont2++;
-    }
-     if(strcmp(ListeEtudiant[j].Departement,"construction")==0){
-        cont3++;
-    }
-    }
+  }
+  
+ void triCroissant(){
+    
+      for( int  j=0;j<i-1;j++){
 
-    printf(" le Departement  informatrique contient  %d etudiant ",cont1);
-    printf(" le Departement management contient  %d etudiant  ",cont2);
-    printf(" le Departement construction contient  %d etudiant  ",cont3);
+        for (int k = 0; k< i-1-j; k++) {
 
-
-
-
-}
-/*
-void tri(){
-    for( int  j=0;j<i-1;j++){
-
-        for (int k = 1; k< i - k - 1; k++) {
-
-    if ( strcmp(ListeEtudiant[k].Nom,ListeEtudiant[k+1].Nom) > 0) {
-        char tmp[20];
-                strcpy(tmp,ListeEtudiant[k]);
-                strcpy(ListeEtudiant[k],ListeEtudiant[k + 1]);
-                strcpy(ListeEtudiant[k+1],tmp);
+     if ( ListeEtudiant[k].NoteGenerale>ListeEtudiant[k+1].NoteGenerale)  {
+      
+                 struct Etudiant   tmp=ListeEtudiant[k];
+               ListeEtudiant[k]=ListeEtudiant[k+1 ];
+              ListeEtudiant[k+1]=tmp;
 
             }
         }
     }
+    printf("Tri ordre des √©tudiants effectu√© .\n");
+  }
+  
+void triStatus(){
+    
+     for( int  j=0;j<i-1;j++){
 
+        for (int k = 0; k< i-1-j; k++) {
+            if (ListeEtudiant[k].NoteGenerale < 10 && ListeEtudiant[k + 1].NoteGenerale >= 10) {
+        struct Etudiant tmp;
+               tmp=ListeEtudiant[k];
+               ListeEtudiant[k]=ListeEtudiant[k+1 ];
+              ListeEtudiant[k+1]=tmp;
+
+            }
+        }
     }
+        printf("Tri status des √©tudiants effectu√©.\n");
+
+  }
+    
+ void tri(){
+       
+       
+ int operation,numero;
+do{
+    printf("Pour trier les √©tudiant (A-Z)  cliquer sur :1  \n");
+    printf("Pour trier  les  √©tudiant ordre croissant cliquer sur :2  \n");
+    printf("Pour trier  les  √©tudiant par status cliquer sur :3  \n");
+    printf("Pour quitter   cliquer sur :4  \n");
 
 
-}
+printf("Saisir le numero  du type operation:");
+scanf("%d",&operation);
 
 
+ switch(operation){
+
+    case 1:
+           triA_Z() ;break;
+    case 2:
+           triCroissant() ;break;
+     case 3:
+           triStatus() ;break;
+       case 4:   printf("quitte");break; 
+
+ }
 
 
-*/
-
-
+}while(operation!=4);
+       
+   } 
 
  void MoyenneGeneral(){
      float sommeInfo=0;
@@ -289,6 +324,54 @@ int cont1=0,cont2=0,cont3=0;
 
 }
 
+void afficherET_seuil(){
+    float seuil;
+    printf("saisir un seuil ");
+    scanf("%f",&seuil);
+     for( int  j=0;j<i;j++){
+
+     if ( ListeEtudiant[j].NoteGenerale>seuil)  {
+      
+       printf("\n ***Etudiant  :%d ***\n",j+1);
+        printf("Etudiant numero :%d \n",ListeEtudiant[j].NumeroUnique);
+        printf("Nom :%s \n",ListeEtudiant[j].Nom);
+        printf("Prenom:%s \n",ListeEtudiant[j].Prenom);
+        printf("Departement :%s \n",ListeEtudiant[j].Departement);
+        printf("Note G√©n√©rale :%.2f \n ",ListeEtudiant[j].NoteGenerale);
+        printf("Date de naissance :%d / %d /%d \n \n",ListeEtudiant[j].dateNaissance.jour,ListeEtudiant[j].dateNaissance.mois,ListeEtudiant[j].dateNaissance.anne);
+            }
+        }
+    }
+    
+
+
+void statistiques(){
+int cont1=0,cont2=0,cont3=0;
+
+    printf("le nombre total d'√©tudiants inscrits:%d",i);
+    for (int j=0;j<i;j++){
+        if(strcmp(ListeEtudiant[j].Departement,"info")==0){
+               cont1++;
+          }
+        if(strcmp(ListeEtudiant[j].Departement,"management")==0){
+          cont2++;
+    }
+     if(strcmp(ListeEtudiant[j].Departement,"construction")==0){
+        cont3++;
+    }
+    }
+  printf("le nombre d'√©tudiants dans chaque d√©partement***** \n");
+  printf("le Departement  informatrique contient  %d etudiant\n ",cont1);
+    printf("le Departement management contient  %d etudiant \n ",cont2);
+    printf("le Departement construction contient  %d etudiant \n  ",cont3);
+
+
+afficherET_seuil();
+
+
+
+
+}
 
 int main() {
 
@@ -301,11 +384,13 @@ scanf("%d",&choix);
  switch(choix){
     case 1: Ajouter() ;break;
     case 2: supprimerModifier() ;break;
-
     case 3:Afficher() ;break;
-    case 5:MoyenneGeneral();break;
-    case 5:MoyenneGeneral();break;
+    case 4:MoyenneGeneral();break;
+    case 5:statistiques();break;
     case 6:rechercher() ;break;
+    case 7:tri() ;break;
+    case 8:printf("quitter") ;break;
+
 }
 
 
